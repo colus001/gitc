@@ -1,0 +1,41 @@
+html, body {
+  font-size: 10px;
+  font-family: Inconsolata;
+}
+
+body, .root {
+  width: 100%;
+  height: 100%;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__commits {
+    flex: 1;
+    max-height: 25rem;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+
+  &__diff {
+    flex: 1;
+    padding: 1rem;
+    max-height: calc(100vh - 25rem);
+    overflow-y: scroll;
+  }
+
+  &__files {
+    flex: 1;
+    padding: 1rem;
+    max-height: calc(100vh - 25rem);
+    overflow-y: scroll;
+  }
+}

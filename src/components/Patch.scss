@@ -1,0 +1,19 @@
+.Patch {
+}
+
+.Patch__title {
+  background-color: gray;
+  color: white;
+}
+
+.Patch__hunk {
+  margin-bottom: 1rem;
+
+  &Header {
+    color: blue;
+  }
+}
+
+.Patch__lines {
+  white-space: pre-wrap;
+}

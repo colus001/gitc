@@ -1,0 +1,20 @@
+.Log {
+  font-size: 1rem;
+
+  &.highlighted {
+    background-color: gray;
+  }
+
+  > div {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &__message {
+    width: 60%;
+  }
+
+  &__author {
+    width: 40%;
+  }
+}
