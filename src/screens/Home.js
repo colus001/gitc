@@ -7,7 +7,7 @@ import DiffView from 'components/DiffView'
 
 import { getCommitLogs } from 'git/log'
 import { setLogs } from 'state/actions/logs'
-import { getCommit } from 'git/repo'
+import { getHead } from 'git/repo'
 
 const path = window.require('path')
 
@@ -34,7 +34,7 @@ class Home extends Component<Props, State> {
   }
 
   async getCommits() {
-    const commit = await getCommit('../treat')
+    const commit = await getHead()
     const logs = await getCommitLogs(commit)
     this.props.setLogs(logs)
 

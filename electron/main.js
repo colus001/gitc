@@ -8,9 +8,7 @@ function createWindow() {
   mainWindow.loadURL('http://localhost:3000')
   mainWindow.webContents.openDevTools()
 
-  mainWindow.on('closed', () => {
-    console.log('main-window closed')
-  })
+  mainWindow.on('closed', app.quit)
 }
 
 app.on('ready', createWindow)

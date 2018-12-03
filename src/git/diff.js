@@ -5,7 +5,7 @@ const path = window.require('path')
 const { Repository } = window.require('nodegit')
 
 export const getDiff = async (sha: string) => {
-  const repo = await Repository.open(path.resolve('../treat'))
+  const repo = await Repository.open(path.resolve('./'))
   const commit = await repo.getCommit(sha)
   return await commit.getDiff()
 }
