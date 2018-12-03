@@ -28,7 +28,6 @@ class CommitList extends Component<Props, State> {
 
   componentDidMount() {
     if (this.dom) this.dom.focus()
-    window.dom = this.dom
     this.setCurrentIndex()
   }
 
@@ -70,8 +69,16 @@ class CommitList extends Component<Props, State> {
     if (!this.dom) return
     const highlighted = ((this.dom.querySelector('.Log.highlighted'): any): HTMLElement)
     const { top } = highlighted.getBoundingClientRect()
-    // $FlowFixMe
-    if (top > this.dom.clientHeight * 0.8) this.dom.scrollTop += Math.floor(this.dom.clientHeight * 0.25)
+
+    const { clientHeight } = this.dom || {}
+    if (top > clientHeight * 0.8) {
+      // $FlowFixMe
+      this.dom.scrollTop += Math.floor(clientHeight * 0.25)
+    } else if (top < clientHeight * 0.2) {
+      // $FlowFixMe
+      this.dom.scrollTop -= Math.floor(clientHeight * 0.25)
+      return
+    }
   }
 
   handleFocus = () => {

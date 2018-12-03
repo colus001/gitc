@@ -6,10 +6,12 @@ const { Repository } = window.require('nodegit')
 export const getLogFromHead = async (path: string) => {
   const repo = await Repository.open(path)
   const firstCommit = await repo.getHeadCommit()
-  return await getCommitHistory(firstCommit.history())
+  return await getCommitLogsFromHistory(firstCommit.history())
 }
 
-function getCommitHistory(history) {
+export const getCommitLogs = (commit: any) => getCommitLogsFromHistory(commit.history())
+
+export function getCommitLogsFromHistory(history: any): Promise<Array<CommitLog>> {
   return new Promise((resolve, reject) => {
     history.on('end', (commits) => {
       resolve(commits.map((commit) => {

@@ -19,8 +19,8 @@ const Patch = ({ className, oldFile, newFile, hunks }: Props) => (
           {hunk.header}
         </div>
         <div className="Patch__lines">
-          {hunk.lines.map((line: string) => (
-            <Line key={line}>{line}</Line>
+          {hunk.lines.map((line: string, index: number) => (
+            <Line key={`${line}-${index}`}>{line}</Line>
           ))}
         </div>
       </div>

@@ -5,8 +5,9 @@ import { connect } from 'react-redux'
 import CommitList from 'containers/CommitList'
 import DiffView from 'components/DiffView'
 
-import { getLogFromHead } from 'git/log'
+import { getCommitLogs } from 'git/log'
 import { setLogs } from 'state/actions/logs'
+import { getCommit } from 'git/repo'
 
 const path = window.require('path')
 
@@ -33,7 +34,8 @@ class Home extends Component<Props, State> {
   }
 
   async getCommits() {
-    const logs = await getLogFromHead(path.resolve('../zerocar-app'))
+    const commit = await getCommit('../treat')
+    const logs = await getCommitLogs(commit)
     this.props.setLogs(logs)
 
     if (!!this.state.selected) return
